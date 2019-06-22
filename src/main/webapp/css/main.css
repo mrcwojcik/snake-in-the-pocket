@@ -1,0 +1,50 @@
+#logoFont {
+    font-family: 'Indie Flower', cursive;
+}
+
+#container {
+    width: 100%;
+    background-color: blue;
+}
+
+#nav {
+    width: 90%;
+    background-color: yellow;
+}
+
+#logo {
+    float: left;
+    margin-left: 50px;
+}
+
+#menu {
+    float: right;
+    margin-right: 50px;
+}
+
+.menuOl {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.liMenu {
+    display: inline-block;
+    line-height: 80px;
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.liMenu a:link {
+    color: black;
+    text-decoration: none;
+}
+
+.liMenu a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.clear {
+    clear: both;
+}
