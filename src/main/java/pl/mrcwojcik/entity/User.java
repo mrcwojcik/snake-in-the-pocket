@@ -15,11 +15,9 @@ public class User {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty
     @Size (max = 20)
     private String firstName;
 
-    @NotEmpty
     @Size (max = 20)
     private String lastName;
 

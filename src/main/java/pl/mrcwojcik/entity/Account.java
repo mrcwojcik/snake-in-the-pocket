@@ -1,8 +1,10 @@
 package pl.mrcwojcik.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import pl.mrcwojcik.validation.AccountAddValidation;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
@@ -22,9 +24,10 @@ public class Account {
     private Bank bank;
 
     @NotNull
+    @DecimalMin("0")
     private BigDecimal startBalance;
 
-    @NotNull
+    @NotNull (groups = AccountAddValidation.class)
     private BigDecimal actualBalance;
 
     @OneToMany (mappedBy = "account")
@@ -34,9 +37,15 @@ public class Account {
     private Goal goal;
 
     @ManyToOne
+    @NotNull (groups = AccountAddValidation.class)
     private User user;
 
     public Account() {
+    }
+
+    @PrePersist
+    public void setFirstActualBalance(){
+        actualBalance = this.startBalance;
     }
 
     public long getId() {
@@ -85,5 +94,21 @@ public class Account {
 
     public void setBills(List<Bill> bills) {
         this.bills = bills;
+    }
+
+    public Goal getGoal() {
+        return goal;
+    }
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -3,20 +3,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Snake in The Pocket</title>
+    <title>Rejestracja - Snake in The Pocket</title>
     <%@include file="include/meta.jsp"%>
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
-
 </head>
 <body>
 <div id="container">
     <%@include file="include/homeMenu.jsp"%>
     <div id="content">
-       <img src="https://i.ibb.co/vj3wy9Z/e-o.png" alt="e-o" border="0"></a>
-    </div>
-    <div id="buttonsSection">
-        <a href="/login" class="myButton">Logowanie</a>
-        <a href="/register" class="myButton">Rejestracja</a>
+        <div id="form">
+            <h2>Login</h2>
+            <form:form modelAttribute="loginAuth" method="post">
+                E-Mail (login): <form:input path="email"/><br/>
+                Hasło: <form:password path="password"/><br/>
+                <input type="submit" value="Zaloguj się">
+            </form:form>
+        </div>
+
     </div>
 </div>
 </body>
