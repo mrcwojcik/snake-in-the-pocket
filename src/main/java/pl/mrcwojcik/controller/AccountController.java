@@ -30,11 +30,6 @@ public class AccountController {
     @Autowired
     BankRepository bankRepository;
 
-//    @GetMapping("/{id}")
-//    public String showAccount() {
-//        return "account/accountDetails";
-//    }
-
     @GetMapping("/add")
     public String addAccountView(Model model, HttpSession httpSession) {
         model.addAttribute("account", new Account());
@@ -42,7 +37,7 @@ public class AccountController {
     }
 
     @PostMapping("/add")
-    public String addAccountPOST(@Validated({Default.class}) Account account, BindingResult result, HttpSession session) {
+    public String addAccountPOST(@ModelAttribute @Valid Account account, BindingResult result, HttpSession session) {
         if (result.hasErrors()) {
             return "account/add";
         }

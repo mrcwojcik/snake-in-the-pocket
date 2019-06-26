@@ -1,7 +1,6 @@
 package pl.mrcwojcik.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import pl.mrcwojcik.validation.AccountAddValidation;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
@@ -27,7 +26,6 @@ public class Account {
     @DecimalMin("0")
     private BigDecimal startBalance;
 
-    @NotNull (groups = AccountAddValidation.class)
     private BigDecimal actualBalance;
 
     @OneToMany (mappedBy = "account")
@@ -37,7 +35,7 @@ public class Account {
     private Goal goal;
 
     @ManyToOne
-    @NotNull (groups = AccountAddValidation.class)
+    @NotNull
     private User user;
 
     public Account() {

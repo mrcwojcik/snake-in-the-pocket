@@ -14,7 +14,7 @@
     <%@include file="../include/loggedMenu.jsp"%>
     <div id="adminContent">
         <%@include file="../include/sidebar.jsp"%>
-        <div id="dashboardPanel">
+        <div id="panel">
             <div id="accounts">
                 <c:forEach items="${payers}" var="payer">
                     <div class="account">${payer.name}</div>

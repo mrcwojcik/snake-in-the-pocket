@@ -13,7 +13,7 @@
     <%@include file="../include/loggedMenu.jsp"%>
     <div id="adminContent">
         <%@include file="../include/sidebar.jsp"%>
-        <div id="dashboardPanel">
+        <div id="panel">
             <form:form modelAttribute="payer" method="post">
                 Nazwa: <form:input path="name"/><form:errors path="name"/><br/>
                 <input type="submit" value="Dodaj nowego płatnika"/>

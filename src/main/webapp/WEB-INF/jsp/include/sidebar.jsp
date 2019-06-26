@@ -4,16 +4,20 @@
 
 <div id="sidebar">
     <ul class="sidebarMenu">
-        <li class="liSidebar"><a href="/admin/dashboard">Dashboard</a></li>
-        <li class="liSidebar"><a href="/admin/account/add">Konta</a></li>
-        <li class="liSidebar"><a href="#">Transakcje</a>
-            <ul class="sidebarMenu">
-                <li><a href="#">Ogólne</a></li>
-                <li><a href="/admin/category/">Kategorie</a></li>
-                <li><a href="/admin/payer/">Płatnicy</a></li>
-                <li><a href="/admin/payer/add">Dodaj Płatnicy</a></li>
+        <li></li><a href="/admin/dashboard">Dashboard</a></li>
+        <li class="dropdown-btn">Konta</li>
+            <ul class="sidebarHidden">
+                <li><a href="#">Lista kont</a></li>
+                <li><a href="/admin/account/add">Dodaj konto</a></li>
             </ul>
-        </li>
+        <li class="dropdown-btn">Transakcje</li>
+            <ul class="sidebarHidden">
+                <li><a href="#">Wszystkie transakcje</a></li>
+                <li><a href="#">Dodaj transakcje transakcje</a></li>
+                <li><a href="/admin/category/">Lista kategorii</a></li>
+                <li><a href="/admin/payer/">Lista płatników</a></li>
+                <li><a href="/admin/payer/add">Dodaj płatnika</a></li>
+            </ul>
         <li class="liSidebar"><a href="#">Raporty</a></li>
         <li class="liSidebar"><a href="#">Cele</a></li>
     </ul>

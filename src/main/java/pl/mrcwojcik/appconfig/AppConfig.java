@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import pl.mrcwojcik.converter.UserConverter;
+import pl.mrcwojcik.entity.User;
 
 import javax.persistence.EntityManagerFactory;
 import javax.validation.Validator;
@@ -69,6 +71,16 @@ public class AppConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(getUserConverter());
+    }
+    @Bean
+    public UserConverter getUserConverter(){
+        return new UserConverter();
     }
 
 }
