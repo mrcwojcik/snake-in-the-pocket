@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -28,13 +29,35 @@ public class User {
     @NotEmpty
     private String password;
 
-    @OneToMany (mappedBy = "user")
+    @AssertFalse
+    private boolean superadmin;
+
+    @OneToMany (mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Account> accounts;
 
-    @OneToMany (mappedBy = "user")
+    @OneToMany (mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Payer> payers;
 
+    @OneToMany (mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Goal> goals;
+
     public User() {
+    }
+
+    public List<Goal> getGoals() {
+        return goals;
+    }
+
+    public boolean isSuperadmin() {
+        return superadmin;
+    }
+
+    public void setSuperadmin(boolean superadmin) {
+        this.superadmin = superadmin;
+    }
+
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
     }
 
     public List<Payer> getPayers() {

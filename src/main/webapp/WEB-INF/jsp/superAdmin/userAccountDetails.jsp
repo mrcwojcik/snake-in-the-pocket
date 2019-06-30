@@ -1,26 +1,25 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Snake in The Pocket - Dashboard</title>
-    <%@include file="../include/meta.jsp"%>
+    <%@include file="../include/meta.jsp" %>
     <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
-
 </head>
 <body>
 <div id="container">
-    <%@include file="../include/loggedMenu.jsp"%>
     <div id="adminContent">
-        <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
             <div id="accounts">
-                <c:forEach items="${payers}" var="payer">
-                    <div class="account">${payer.name} - <a href="/admin/payer/edit/${payer.id}">Edytuj</a> || <a href="/admin/payer/delete/${payer.id}">Usuń</a> </div>
+                    <h2>Szczegóły:</h2>
+                <c:forEach items="${bills}" var="detail">
+                    ${detail.category.categoryName}: ${detail.value} <br/>
                 </c:forEach>
-                <div class="clear"></div>
-            </div>
+            </div><br/>
+            <a href="/superAdmin/users">WRÓĆ DO LISTY USERÓW</a><br/>
+            <a href="/superAdmin/">WRÓĆ DO GŁÓWNEGO PANELU</a>
         </div>
         <div class="clear"></div>
     </div>

@@ -3,11 +3,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Snake in The Pocket - Dashboard</title>
+    <title>Snake in The Pocket - Dodaj konto</title>
     <%@include file="../include/meta.jsp"%>
     <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
-
 </head>
 <body>
 <div id="container">
@@ -15,12 +14,12 @@
     <div id="adminContent">
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
-            <div id="accounts">
-                <c:forEach items="${payers}" var="payer">
-                    <div class="account">${payer.name} - <a href="/admin/payer/edit/${payer.id}">Edytuj</a> || <a href="/admin/payer/delete/${payer.id}">Usuń</a> </div>
-                </c:forEach>
-                <div class="clear"></div>
-            </div>
+            <form:form modelAttribute="goal" method="post">
+                Cel: <form:input path="name"/><form:errors path="name"/><br/>
+                Wartość celu: <form:input path="goalValue"/><form:errors path="goalValue"/><br/>
+                <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
+                <input type="submit" value="Dodaj cel"/>
+            </form:form>
         </div>
         <div class="clear"></div>
     </div>

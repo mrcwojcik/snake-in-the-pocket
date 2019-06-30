@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     var btnToHide = document.querySelectorAll('.dropdown-btn');
-    console.log(btnToHide);
 
     btnToHide.forEach(function (e) {
         e.addEventListener('click', function () {

@@ -23,7 +23,8 @@
                 <form:hidden path="password"/>
                 <input type="submit" value="Zmień dane"/>
             </form:form>
-            <a href="/admin/pass" id="changePass">Zmiana hasła</a>
+            <a href="/admin/pass" id="changePass">Zmiana hasła</a><br/>
+            <a href="/admin/delete/" class="deleteAccount">USUŃ KONTO</a>
         </div>
         <div class="clear"></div>
     </div>

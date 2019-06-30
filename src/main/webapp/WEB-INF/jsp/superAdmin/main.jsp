@@ -1,25 +1,25 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <html>
 <head>
     <title>Snake in The Pocket - Dashboard</title>
-    <%@include file="../include/meta.jsp"%>
+    <%@include file="../include/meta.jsp" %>
     <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
-
 </head>
 <body>
 <div id="container">
-    <%@include file="../include/loggedMenu.jsp"%>
     <div id="adminContent">
-        <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
             <div id="accounts">
-                <c:forEach items="${payers}" var="payer">
-                    <div class="account">${payer.name} - <a href="/admin/payer/edit/${payer.id}">Edytuj</a> || <a href="/admin/payer/delete/${payer.id}">Usuń</a> </div>
-                </c:forEach>
-                <div class="clear"></div>
+                <a href="/superAdmin/users">Lista użytkowników</a><Br/>
+                <a href="/superAdmin/categories">Lista kategorii</a><br/>
+                <a href="/superAdmin/banks">Lista banków</a><br/>
+                ------<br/>
+                <a href="/superAdmin/logout">Wyloguj się</a>
             </div>
         </div>
         <div class="clear"></div>

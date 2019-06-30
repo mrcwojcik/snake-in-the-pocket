@@ -78,9 +78,25 @@ public class AdminController {
         return "redirect:/admin/profile";
     }
 
+    @GetMapping("/delete")
+    public String deleteAccount(){
+        return "admin/deleteConfirm";
+    }
+
+    @GetMapping("/deleteConfirm/{id}")
+    public String deleteConfirm(@PathVariable Long id, HttpSession httpSession){
+        User user = userRepository.findById(id).get();
+        userRepository.delete(user);
+        httpSession.setAttribute("loggedUser", user);
+        httpSession.setMaxInactiveInterval(0);
+        return "redirect:/";
+    }
+
+
     @ModelAttribute ("accounts")
     public List<Account> getAllUserAccounts(HttpSession httpSession){
         return accountRepository.findAllByUserId(getFromSession(httpSession).getId());
+
     }
 
     public User getFromSession(HttpSession httpSession){

@@ -15,7 +15,6 @@
         <%@include file="../include/sidebar.jsp" %>
         <div id="panel">
             <div id="accounts">
-
                 <table>
                     <tr>
                         <th>Nr transakcji</th>

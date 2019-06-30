@@ -3,9 +3,11 @@ package pl.mrcwojcik.entity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,9 +32,6 @@ public class Account {
 
     @OneToMany (mappedBy = "account", cascade = CascadeType.REMOVE)
     private List<Bill> bills;
-
-    @ManyToOne
-    private Goal goal;
 
     @ManyToOne
     private User user;
@@ -101,19 +100,15 @@ public class Account {
         this.bills = bills;
     }
 
-    public Goal getGoal() {
-        return goal;
-    }
-
-    public void setGoal(Goal goal) {
-        this.goal = goal;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getNameAndBalance(){
+        return this.accountName + ": " + this.actualBalance;
     }
 }

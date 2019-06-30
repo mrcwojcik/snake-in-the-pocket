@@ -60,8 +60,13 @@ public class HomeController {
         if (authenticationService.givenEmailExistInDb(loginAuth.getEmail())) {
             User user = authenticationService.authenticate(loginAuth.getEmail(), loginAuth.getPassword());
             if (user != null) {
-                httpSession.setAttribute("loggedUser", user);
-                return "redirect:/admin/dashboard";
+                if (user.isSuperadmin()){
+                    httpSession.setAttribute("superAdmin", user);
+                    return "redirect:/superAdmin/";
+                } else {
+                    httpSession.setAttribute("loggedUser", user);
+                    return "redirect:/admin/dashboard";
+                }
             } else {
                 return "login";
             }

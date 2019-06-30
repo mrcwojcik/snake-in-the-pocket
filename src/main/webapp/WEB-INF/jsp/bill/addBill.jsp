@@ -14,12 +14,22 @@
     <div id="adminContent">
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
-            <form:form modelAttribute="bill" method="post">
-                Wydatek: <form:radiobutton path="plusOrMinus" value="false"/> || Przychód: <form:radiobutton path="plusOrMinus" value="true"/><br/>
-                Kto: <form:select path="payer" items="${payers}" itemLabel="name" itemValue="id"/><br/>
-                Konto: <form:select path="account" items="${accounts}" itemLabel="accountName" itemValue="id"/><br/>
-                <input type="submit" value="Dalej"/>
-            </form:form>
+            <c:if test="${empty payers}">
+                Zanim dodasz rachunek, musisz dodać płatnika. <a href="/admin/payer/addFromBill">DODAJ</a>
+            </c:if>
+            <c:if test="${!empty payers}">
+                <form:form modelAttribute="bill" method="post">
+                    Wydatek: <form:radiobutton path="plusOrMinus" value="false"/> || Przychód: <form:radiobutton path="plusOrMinus" value="true"/><br/>
+                    Kto: <form:select path="payer" items="${payers}" itemLabel="name" itemValue="id"/> <a href="/admin/payer/addFromBill">Dodaj kolejnego płatnika</a> <br/>
+                    <c:if test="${empty account}">
+                        Konto: <form:select path="account" items="${accounts}" itemLabel="accountName" itemValue="id"/><br/>
+                    </c:if>
+                    <c:if test="${!empty account}">
+                        Wybrałeś konto: ${account.accountName}. <form:hidden path="account" value="${account.id}"/>
+                    </c:if>
+                    <input type="submit" value="Dalej"/>
+                </form:form>
+            </c:if>
         </div>
         <div class="clear"></div>
     </div>

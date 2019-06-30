@@ -1,7 +1,9 @@
 package pl.mrcwojcik.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,31 +16,20 @@ public class Goal {
 
     private String name;
 
-    @OneToMany (mappedBy = "goal")
-    private List<Account> accounts;
-
     private BigDecimal goalValue;
+
+    @ManyToOne
+    private User user;
 
     public Goal() {
     }
 
-    private BigDecimal getGoalStatus(){
-        BigDecimal sum = getActualBalance();
-        return goalValue.multiply(new BigDecimal(100)).divide(sum);
+    public User getUser() {
+        return user;
     }
 
-    private BigDecimal getActualBalance(){
-        BigDecimal sum = new BigDecimal(0);
-        for (Account a : accounts){
-            sum = sum.add(a.getActualBalance());
-        }
-
-        return sum;
-    }
-
-    private BigDecimal getDifference(){
-        BigDecimal sum = getActualBalance();
-        return sum.subtract(this.goalValue);
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public long getId() {
@@ -55,14 +46,6 @@ public class Goal {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Account> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
     }
 
     public BigDecimal getGoalValue() {

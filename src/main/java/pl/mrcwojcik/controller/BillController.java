@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.jsf.FacesContextUtils;
 import pl.mrcwojcik.entity.*;
 import pl.mrcwojcik.repositories.*;
+import pl.mrcwojcik.service.AccountService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -32,6 +33,9 @@ public class BillController {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private AccountService accountService;
+
     @GetMapping("/")
     public String allBills(){
         return "bill/all";
@@ -45,6 +49,23 @@ public class BillController {
 
     @PostMapping("/add")
     public String addBillPOST(@ModelAttribute @Valid Bill bill, BindingResult result){
+        if (result.hasErrors()){
+            return "bill/addBill";
+        }
+
+        Bill newBill = billRepository.save(bill);
+        return "redirect:/admin/transaction/addDetails/" + newBill.getId();
+    }
+
+    @GetMapping("/add/{accountId}")
+    public String addBillToAccount(@PathVariable("accountId") Long accountId, Model model){
+        model.addAttribute("bill", new Bill());
+        model.addAttribute("account", accountRepository.findById(accountId).get());
+        return "bill/addBill";
+    }
+
+    @PostMapping("/add/{accountId}")
+    public String addBillToAccountPOST(@ModelAttribute @Valid Bill bill, BindingResult result){
         if (result.hasErrors()){
             return "bill/addBill";
         }
@@ -93,18 +114,21 @@ public class BillController {
         return "bill/billDetails";
     }
 
+    @GetMapping("/bills/account/{accountId}")
+    public String showAccountBills(@PathVariable long accountId, Model model){
+        model.addAttribute("bills", billRepository.findAllByAccount_Id(accountId));
+        return "bill/all";
+    }
+
+    @GetMapping("/bills/payer/{payerId}")
+    public String showPayerBills(@PathVariable long payerId, Model model){
+        model.addAttribute("bills", billRepository.findAllByPayerId(payerId));
+        return "bill/all";
+    }
+
     @GetMapping("/delete/{id}")
     public String deleteBill(@PathVariable long id){
-        Bill billToDelete = billRepository.findById(id).get();
-        Account account = billToDelete.getAccount();
-        if (billToDelete.isPlusOrMinus()){
-            account.subtractionActualBalance(billToDelete.getBillValue());
-        } else {
-            account.addActualBalance(billToDelete.getBillValue());
-        }
-
-        accountRepository.save(account);
-        billRepository.delete(billRepository.findById(id).get());
+        accountService.changeActualBalance(id);
         return "redirect:/admin/transaction/";
     }
 
@@ -125,14 +149,15 @@ public class BillController {
         return categoryRepository.findAll();
     }
 
-    @ModelAttribute("bills")
+    @ModelAttribute("allBills")
     public List<Bill> getBillsByUser(){
         return billRepository.findAll();
     }
 
     @ModelAttribute("payers")
-    public List<Payer> getPayers(){
-        return payerRepository.findAll();
+    public List<Payer> getPayers(HttpSession httpSession){
+        User user = (User) httpSession.getAttribute("loggedUser");
+        return payerRepository.findAllByUserId(user.getId());
     }
 
     @ModelAttribute("user")
@@ -142,6 +167,7 @@ public class BillController {
 
     @ModelAttribute ("accounts")
     public List<Account> getAllUserAccounts(HttpSession httpSession){
-        return accountRepository.findAllByUserId(getFromSession(httpSession).getId());
+        User user = (User) httpSession.getAttribute("loggedUser");
+        return accountRepository.findAllByUserId(user.getId());
     }
 }

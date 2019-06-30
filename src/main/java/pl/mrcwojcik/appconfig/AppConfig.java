@@ -83,6 +83,7 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addConverter(getAccountConverter());
         registry.addConverter(getBillConverter());
         registry.addConverter(getCategoryConverter());
+        registry.addConverter(getGoalConverter());
     }
 
     @Bean
@@ -110,5 +111,8 @@ public class AppConfig implements WebMvcConfigurer {
 
     @Bean
     public CategoryConverter getCategoryConverter(){return new CategoryConverter();}
+
+    @Bean
+    public GoalConverter getGoalConverter(){return new GoalConverter();}
 
 }

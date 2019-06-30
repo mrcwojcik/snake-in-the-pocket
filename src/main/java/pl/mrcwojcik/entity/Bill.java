@@ -17,7 +17,7 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
+    @ManyToOne
     private Payer payer;
 
     private boolean plusOrMinus;
