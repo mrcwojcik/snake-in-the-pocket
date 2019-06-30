@@ -17,17 +17,25 @@
             <div id="accounts">
                 <table>
                     <tr>
-                        <th>Nazwa konta</th>
-                        <th>Stan konta</th>
-                        <th colspan="2">Szczegóły</th>
-                        <th>Transakcje</th>
+                        <th>Nr transakcji</th>
+                        <th>Kto</th>
+                        <th>Plus or Minus</th>
+                        <th>Konto</th>
+                        <th>Suma</th>
+                        <th>Data</th>
+                        <th>Szczegóły</th>
+                        <th>Usuń</th>
                     </tr>
-                    <c:forEach items="${accounts}" var="account">
+                    <c:forEach items="${bills}" var="bill">
                         <tr>
-                            <td>${account.accountName}</td>
-                            <td>${account.actualBalance} zł</td>
-                            <td colspan="2">Details Info</td>
-                            <td>Dodaj</td>
+                            <td>${bill.id}</td>
+                            <td>${bill.payer.name}</td>
+                            <td>${bill.plusOrMinus}</td>
+                            <td>${bill.account.accountName}</td>
+                            <td>${bill.billValue}</td>
+                            <td>${bill.created}</td>
+                            <td><a href="/admin/transaction/billDetails/${bill.id}">Szczegóły</a></td>
+                            <td><a href="/admin/transaction/delete/${bill.id}">Usuń</a></td>
                         </tr>
                     </c:forEach>
                 </table>

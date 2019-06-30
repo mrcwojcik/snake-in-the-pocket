@@ -4,13 +4,13 @@
 
 <div id="nav">
     <div id="logo">
-        <p id="logoFont">Snake in The Pocket</p>
+        <p id="logoFont"><a href="/">Snake in The Pocket</a></p>
     </div>
     <div id="menu">
         <ul class="menuOl">
-            <li class="liMenu"><a href="#">Start</a></li>
-            <li class="liMenu"><a href="#">O projekcie</a></li>
-            <li class="liMenu"><a href="#">Kontakt</a></li>
+            <li class="liMenu"><a href="/">Start</a></li>
+            <li class="liMenu"><a href="/about">O projekcie</a></li>
+            <li class="liMenu"><a href="/contact">Kontakt</a></li>
             <li class="liMenu"><a href="/login" id="login">Logowanie</a></li>
             <li class="liMenu reg"><a href="/register" id="register">Rejestracja</a></li>
         </ul>

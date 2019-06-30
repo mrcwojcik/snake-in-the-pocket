@@ -14,10 +14,11 @@
     <div id="adminContent">
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
-            <form:form modelAttribute="payer" method="post">
-                Nazwa: <form:input path="name"/><form:errors path="name"/><br/>
-                <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
-                <input type="submit" value="Dodaj nowego płatnika"/>
+            <form:form modelAttribute="bill" method="post">
+                Wydatek: <form:radiobutton path="plusOrMinus" value="false"/> || Przychód: <form:radiobutton path="plusOrMinus" value="true"/><br/>
+                Kto: <form:select path="payer" items="${payers}" itemLabel="name" itemValue="id"/><br/>
+                Konto: <form:select path="account" items="${accounts}" itemLabel="accountName" itemValue="id"/><br/>
+                <input type="submit" value="Dalej"/>
             </form:form>
         </div>
         <div class="clear"></div>

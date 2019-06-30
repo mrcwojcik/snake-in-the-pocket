@@ -20,7 +20,7 @@ import javax.validation.Valid;
 public class HomeController {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private AuthenticationService authenticationService;
@@ -68,5 +68,15 @@ public class HomeController {
         } else {
             return "login";
         }
+    }
+
+    @GetMapping("/contact")
+    public String contact(){
+        return "contact";
+    }
+
+    @GetMapping("/about")
+    public String about(){
+        return "about";
     }
 }

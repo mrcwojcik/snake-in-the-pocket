@@ -14,11 +14,11 @@
     <div id="adminContent">
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
-            <form:form modelAttribute="payer" method="post">
-                Nazwa: <form:input path="name"/><form:errors path="name"/><br/>
-                <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
-                <input type="submit" value="Dodaj nowego płatnika"/>
-            </form:form>
+            <h2>Na pewno chcesz usunąć konto?</h2>
+            <p>UWAGA: Po potwierdzeniu, nie będziesz mógł cofnąć tej akcji. Wraz z usunięciem stracisz dane
+                dotyczące tego konta w raportach, a także usuniesz połączone z nim transakcje</p>
+            <a href="/admin/account/deleteConfirm/${id}" class="deleteConfirmLink">POTWIERDZAM</a>
+            <a href="/admin/account/" class="deleteConfirmLink">NIE, COFNIJ MNIE</a>
         </div>
         <div class="clear"></div>
     </div>

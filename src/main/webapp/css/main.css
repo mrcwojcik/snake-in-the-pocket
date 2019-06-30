@@ -3,6 +3,12 @@
     font-size: 25px;
 }
 
+
+#logoFont a {
+    text-decoration: none;
+    color: black;
+}
+
 #container {
     width: 100%;
 }

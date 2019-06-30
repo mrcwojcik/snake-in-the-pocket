@@ -17,7 +17,7 @@
             <form:form modelAttribute="payer" method="post">
                 Nazwa: <form:input path="name"/><form:errors path="name"/><br/>
                 <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
-                <input type="submit" value="Dodaj nowego płatnika"/>
+                <input type="submit" value="Edytuj dane"/>
             </form:form>
         </div>
         <div class="clear"></div>

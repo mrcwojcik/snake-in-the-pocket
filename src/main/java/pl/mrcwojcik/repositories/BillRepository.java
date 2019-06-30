@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface BillRepository extends JpaRepository<Bill, Long> {
 
-//    List<Bill> findAllBy
+//    List<Bill> findAllByAccount_Id();
 
 }

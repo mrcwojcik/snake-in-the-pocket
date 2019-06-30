@@ -16,7 +16,7 @@ public class BillDetails {
     private Category category;
     private BigDecimal value;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private Bill bill;
 
     public BillDetails() {
@@ -44,5 +44,13 @@ public class BillDetails {
 
     public void setValue(BigDecimal value) {
         this.value = value;
+    }
+
+    public Bill getBill() {
+        return bill;
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
     }
 }

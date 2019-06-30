@@ -17,36 +17,13 @@
             <form:form modelAttribute="account" method="post">
                 Nazwa konta: <form:input path="accountName"/><form:errors path="accountName"/><br>
                 Stan konta: <form:input path="startBalance"/><form:errors path="startBalance"/><br>
-                Bank: <form:select path="bank" items="${banks}" itemLabel="name" itemValue="id"/><br>
-                User: <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
-                Actual: <form:errors path="actualBalance"/><br/>
-                Bills <form:errors path="bills"/><br/>
-                Goal <form:errors path="goal"/><br/>
+                Wybierz bank: <form:select path="bank" items="${banks}" itemLabel="name" itemValue="id"/><br>
+                <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
                 <input type="submit" value="Dodaj konto"/>
             </form:form>
         </div>
         <div class="clear"></div>
     </div>
 </div>
-<script>
-    var sidebarHidden = document.querySelectorAll(".sidebarHidden");
-    sidebarHidden.forEach(function (value) {
-        value.style.display = "none";
-    });
-
-    var btnToHide = document.querySelectorAll('.dropdown-btn');
-    console.log(btnToHide);
-
-    btnToHide.forEach(function (e) {
-        e.addEventListener('click', function () {
-            if (this.nextElementSibling.style.display === "inline"){
-                this.nextElementSibling.style.display = "none";
-            } else {
-                this.nextElementSibling.style.display = "inline";
-
-            }
-        })
-    });
-</script>
 </body>
 </html>

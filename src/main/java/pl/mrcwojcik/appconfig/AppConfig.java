@@ -14,7 +14,8 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import pl.mrcwojcik.converter.UserConverter;
+import pl.mrcwojcik.converter.*;
+import pl.mrcwojcik.entity.Bill;
 import pl.mrcwojcik.entity.User;
 
 import javax.persistence.EntityManagerFactory;
@@ -77,10 +78,37 @@ public class AppConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(getUserConverter());
+        registry.addConverter(getBankConverter());
+        registry.addConverter(getPayerConverter());
+        registry.addConverter(getAccountConverter());
+        registry.addConverter(getBillConverter());
+        registry.addConverter(getCategoryConverter());
     }
+
     @Bean
     public UserConverter getUserConverter(){
         return new UserConverter();
     }
+
+    @Bean
+    public BankConverter getBankConverter(){
+        return new BankConverter();
+    }
+
+    @Bean
+    public AccountConverter getAccountConverter(){
+        return new AccountConverter();
+    }
+
+    @Bean
+    public PayerConverter getPayerConverter(){
+        return new PayerConverter();
+    }
+
+    @Bean
+    public BillConverter getBillConverter(){return new BillConverter();}
+
+    @Bean
+    public CategoryConverter getCategoryConverter(){return new CategoryConverter();}
 
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public class CategoryController {
 
     @Autowired
-    CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     @GetMapping ("/")
     public String showCategories(){

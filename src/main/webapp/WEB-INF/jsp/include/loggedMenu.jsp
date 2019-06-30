@@ -4,12 +4,12 @@
 
 <div id="nav">
     <div id="logo">
-        <p id="logoFont">Snake in The Pocket</p>
+        <p id="logoFont"><a href="/admin/dashboard">Snake in The Pocket</a></p>
     </div>
     <div id="menu">
         <ul class="menuOl">
             <li class="liMenu"><a href="/admin/dashboard">Dashboard</a></li>
-            <li class="liMenu"><a href="#">Ustawienia profilu</a></li>
+            <li class="liMenu"><a href="/admin/profile">Ustawienia profilu</a></li>
             <li class="liMenu">Cześć ${sessionScope.loggedUser.firstName}<a href="/admin/logout" id="login">|| Wyloguj</a></li>
         </ul>
     </div>

@@ -28,14 +28,13 @@ public class Account {
 
     private BigDecimal actualBalance;
 
-    @OneToMany (mappedBy = "account")
+    @OneToMany (mappedBy = "account", cascade = CascadeType.REMOVE)
     private List<Bill> bills;
 
     @ManyToOne
     private Goal goal;
 
     @ManyToOne
-    @NotNull
     private User user;
 
     public Account() {
@@ -84,6 +83,14 @@ public class Account {
 
     public void setActualBalance(BigDecimal actualBalance) {
         this.actualBalance = actualBalance;
+    }
+
+    public void addActualBalance(BigDecimal decimal){
+        this.actualBalance = this.actualBalance.add(decimal);
+    }
+
+    public void subtractionActualBalance(BigDecimal decimal){
+        this.actualBalance = this.actualBalance.subtract(decimal);
     }
 
     public List<Bill> getBills() {

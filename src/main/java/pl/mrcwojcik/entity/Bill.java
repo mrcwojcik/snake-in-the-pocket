@@ -5,6 +5,8 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,10 +22,11 @@ public class Bill {
 
     private boolean plusOrMinus;
 
-    @CreatedDate
-    private LocalDateTime created;
+    @Column(name = "created", columnDefinition="DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
 
-    @OneToMany (mappedBy = "bill")
+    @OneToMany (mappedBy = "bill", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<BillDetails> billDetails;
 
     @ManyToOne
@@ -40,6 +43,12 @@ public class Bill {
 
         return sum;
     }
+
+    @PrePersist
+    public void prePersist(){
+        created = java.util.Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
+    }
+
 
     public long getId() {
         return id;
@@ -65,11 +74,12 @@ public class Bill {
         this.plusOrMinus = plusOrMinus;
     }
 
-    public LocalDateTime getCreated() {
+
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
@@ -79,5 +89,13 @@ public class Bill {
 
     public void setBillDetails(List<BillDetails> billDetails) {
         this.billDetails = billDetails;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

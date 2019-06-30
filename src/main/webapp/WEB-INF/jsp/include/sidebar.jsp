@@ -4,21 +4,21 @@
 
 <div id="sidebar">
     <ul class="sidebarMenu">
-        <li></li><a href="/admin/dashboard">Dashboard</a></li>
-        <li class="dropdown-btn">Konta</li>
+        <li><a href="/admin/dashboard">Dashboard</a></li>
+        <li class="dropdown-btn">Konta <i class="arrow down"></i></li>
             <ul class="sidebarHidden">
-                <li><a href="#">Lista kont</a></li>
+                <li><a href="/admin/account/">Lista kont</a></li>
                 <li><a href="/admin/account/add">Dodaj konto</a></li>
             </ul>
-        <li class="dropdown-btn">Transakcje</li>
+        <li class="dropdown-btn">Transakcje <i class="arrow down"></i></li>
             <ul class="sidebarHidden">
-                <li><a href="#">Wszystkie transakcje</a></li>
-                <li><a href="#">Dodaj transakcje transakcje</a></li>
+                <li><a href="/admin/transaction/">Wszystkie transakcje</a></li>
+                <li><a href="/admin/transaction/add">Dodaj transakcje transakcje</a></li>
                 <li><a href="/admin/category/">Lista kategorii</a></li>
                 <li><a href="/admin/payer/">Lista płatników</a></li>
                 <li><a href="/admin/payer/add">Dodaj płatnika</a></li>
             </ul>
-        <li class="liSidebar"><a href="#">Raporty</a></li>
-        <li class="liSidebar"><a href="#">Cele</a></li>
+        <li class="liSidebar"><a href="/admin/raports">Raporty</a></li>
+        <li class="liSidebar"><a href="/admin/goals">Cele</a></li>
     </ul>
 </div>

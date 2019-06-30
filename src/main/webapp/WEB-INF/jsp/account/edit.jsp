@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Snake in The Pocket - Dodaj konto</title>
+    <title>Snake in The Pocket - Edytuj konto</title>
     <%@include file="../include/meta.jsp"%>
     <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
@@ -14,10 +14,14 @@
     <div id="adminContent">
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
-            <form:form modelAttribute="payer" method="post">
-                Nazwa: <form:input path="name"/><form:errors path="name"/><br/>
+            <h2>Edytuj konto:</h2>
+            <form:form modelAttribute="account" method="post">
+                Nazwa konta: <form:input path="accountName"/><form:errors path="accountName"/><br>
+                Stan konta: <form:input path="startBalance"/><form:errors path="startBalance"/><br>
+                Wybierz bank: <form:select path="bank" items="${banks}" itemLabel="name" itemValue="id"/><br>
+                <form:hidden path="actualBalance"/><br/>
                 <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
-                <input type="submit" value="Dodaj nowego płatnika"/>
+                <input type="submit" value="Edytuj konto"/>
             </form:form>
         </div>
         <div class="clear"></div>

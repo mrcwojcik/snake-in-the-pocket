@@ -18,8 +18,43 @@
     padding: 0;
 }
 
+.sidebarMenu li {
+    font-size: 20px;
+}
+
 .sidebarHidden {
     list-style-type: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
+}
+
+.sidebarHidden li {
+    padding: 0;
+    margin-left: 20px;
+}
+
+#sidebar a:link {
+    color: black;
+    text-decoration: none;
+}
+
+#sidebar a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+#changePass {
+
 }

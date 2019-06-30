@@ -31,7 +31,18 @@ public class User {
     @OneToMany (mappedBy = "user")
     private List<Account> accounts;
 
+    @OneToMany (mappedBy = "user")
+    private List<Payer> payers;
+
     public User() {
+    }
+
+    public List<Payer> getPayers() {
+        return payers;
+    }
+
+    public void setPayers(List<Payer> payers) {
+        this.payers = payers;
     }
 
     public long getId() {
