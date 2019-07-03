@@ -7,6 +7,7 @@
     <%@include file="../include/meta.jsp" %>
     <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
+    <script defer src="/js/goal.js"></script>
 </head>
 <body>
 <div id="container">
@@ -36,7 +37,12 @@
                 <p>Wybierz, dla jakich kont chcesz policzyć ile brakuje do realizacji celu:</p>
                 <form:form modelAttribute="goalCalculate" method="post">
                     <form:select path="accounts" multiple="true" items="${accounts}" itemValue="id" itemLabel="nameAndBalance"></form:select><br/>
-                    <form:select path="goal" items="${goals}" itemValue="id" itemLabel="name"></form:select>
+                    <form:select path="goal" items="${goals}" itemValue="id" itemLabel="name"></form:select><br/>
+                    Wybierz:
+                    <button id="timeGoalBtn">Ile muszę odkładać, żeby osiągnąć cel w wybranym czasie</button>
+                    <button id="contributionBtn">Ile będę zbierał, jeśli co miesiąc odłożę</button><br/>
+                    <div id="timeQuestion" style="display: none">Wskaż (w miesiącach), ile chcesz oszczędzać <form:input path="time" value="0"/></div><br/>
+                    <div id="contributionQuestion" style="display:none;">Wskaż, ile będziesz odkładać miesięcznie <form:input path="contribution" value="0"/></div><br/>
                     <input type="submit" value="Oblicz"/>
                 </form:form>
                 <c:if test="${!empty calculate}">
@@ -45,6 +51,12 @@
                         Tyle masz na kontach: ${calculate.actualStatus} zł<br/>
                         Tyle Ci brakuje, żeby spełnić cel: ${calculate.difference} zł<br/>
                         Taki status realizacji masz zrobiony: ${calculate.goalStatus}%<br/>
+                        <c:if test="${calculate.timeToGoal < 0}">
+                            Tyle czaus potrzebujesz, żeby osiągnąć cel: ${calculate.timeToGoal} miesięcy<br/>
+                        </c:if>
+                        <c:if test="${calculate.monthContribution < 0}">
+                            Tyle musisz oszdzędzać miesięcznie, żeby osiągnąć zakładany cel: ${calculate.monthContribution} złotych<br/>
+                        </c:if>
                     </div>
                 </c:if>
             </div>

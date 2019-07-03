@@ -3,12 +3,15 @@ package pl.mrcwojcik.additionals;
 import pl.mrcwojcik.entity.Account;
 import pl.mrcwojcik.entity.Goal;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class GoalCalculate {
 
     private List<Account> accounts;
     private Goal goal;
+    private int time;
+    private BigDecimal contribution;
 
     public GoalCalculate() {
     }
@@ -27,5 +30,21 @@ public class GoalCalculate {
 
     public void setGoal(Goal goal) {
         this.goal = goal;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public BigDecimal getContribution() {
+        return contribution;
+    }
+
+    public void setContribution(BigDecimal contribution) {
+        this.contribution = contribution;
     }
 }

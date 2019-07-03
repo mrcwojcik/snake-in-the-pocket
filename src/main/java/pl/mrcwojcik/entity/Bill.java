@@ -26,7 +26,7 @@ public class Bill {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
-    @OneToMany (mappedBy = "bill", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany (mappedBy = "bill", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<BillDetails> billDetails;
 
     @ManyToOne

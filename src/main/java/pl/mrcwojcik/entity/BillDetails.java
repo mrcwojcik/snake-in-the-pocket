@@ -16,7 +16,7 @@ public class BillDetails {
     private Category category;
     private BigDecimal value;
 
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne
     private Bill bill;
 
     public BillDetails() {

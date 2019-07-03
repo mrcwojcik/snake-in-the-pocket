@@ -7,6 +7,8 @@ public class Calculate {
     private BigDecimal actualStatus;
     private BigDecimal goalStatus;
     private BigDecimal difference;
+    private int timeToGoal;
+    private BigDecimal monthContribution;
 
     public BigDecimal getActualStatus() {
         return actualStatus;
@@ -32,4 +34,19 @@ public class Calculate {
         this.difference = difference;
     }
 
+    public int getTimeToGoal() {
+        return timeToGoal;
+    }
+
+    public void setTimeToGoal(int timeToGoal) {
+        this.timeToGoal = timeToGoal;
+    }
+
+    public BigDecimal getMonthContribution() {
+        return monthContribution;
+    }
+
+    public void setMonthContribution(BigDecimal monthContribution) {
+        this.monthContribution = monthContribution;
+    }
 }

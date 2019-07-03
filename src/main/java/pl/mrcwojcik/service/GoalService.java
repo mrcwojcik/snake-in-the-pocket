@@ -21,9 +21,30 @@ public class GoalService {
         calculate.setDifference(calculateDifference(goalCalculate));
         calculate.setGoalStatus(calculateGoalStatus(goalCalculate));
 
-        return calculate;
+        if (goalCalculate.getContribution().intValue() > 0){
+            calculate.setTimeToGoal(calculateTimeToGoal(goalCalculate));
+        }
 
+        if (goalCalculate.getTime() > 0){
+            calculate.setMonthContribution(calculateMonthContribution(goalCalculate));
+
+        }
+
+        return calculate;
     }
+
+    public BigDecimal calculateMonthContribution(GoalCalculate goalCalculate){
+        BigDecimal difference = calculateDifference(goalCalculate);
+        BigDecimal result = difference.divide(new BigDecimal(goalCalculate.getTime()));
+        return result;
+    }
+
+    public int calculateTimeToGoal(GoalCalculate goalCalculate){
+        BigDecimal difference = calculateDifference(goalCalculate);
+        BigDecimal result = difference.divide(goalCalculate.getContribution());
+        return result.intValue();
+    }
+
 
     public BigDecimal calculateActualStatus(GoalCalculate goalCalculate){
         BigDecimal sum = BigDecimal.ZERO;

@@ -76,7 +76,11 @@ public class BillController {
 
     @GetMapping("/addDetails/{id}")
     public String addBillDetails(@PathVariable Long id, Model model){
-        model.addAttribute("bill", billRepository.findById(id).get());
+        if (billRepository.findById(id).isPresent()){
+            model.addAttribute("bill", billRepository.findById(id).get());
+        } else {
+            model.addAttribute("bille", "dupa");
+        }
         model.addAttribute("billDetails", new BillDetails());
         return "bill/addDetails";
     }
@@ -123,6 +127,12 @@ public class BillController {
     @GetMapping("/bills/payer/{payerId}")
     public String showPayerBills(@PathVariable long payerId, Model model){
         model.addAttribute("bills", billRepository.findAllByPayerId(payerId));
+        return "bill/all";
+    }
+
+    @GetMapping("/bills/plusOrMinus/{bool}")
+    public String showAllByPlusOrMinus(@PathVariable boolean bool, Model model){
+        model.addAttribute("bills", billRepository.findBillByPlusOrMinus(bool));
         return "bill/all";
     }
 

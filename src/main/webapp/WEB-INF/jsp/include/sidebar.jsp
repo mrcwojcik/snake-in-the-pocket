@@ -18,7 +18,7 @@
                 <li><a href="/admin/payer/">Lista płatników</a></li>
                 <li><a href="/admin/payer/add">Dodaj płatnika</a></li>
             </ul>
-        <li class="liSidebar"><a href="/admin/raports">Raporty</a></li>
+        <li class="liSidebar"><a href="/admin/report/">Raporty</a></li>
         <li class="dropdown-btn">Cele <i class="arrow down"></i></li>
         <ul class="sidebarHidden">
             <li><a href="/admin/goals/">Wszystkie cele</a></li>

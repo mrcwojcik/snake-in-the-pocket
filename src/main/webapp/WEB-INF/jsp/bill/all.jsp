@@ -29,6 +29,11 @@
                         </c:forEach>
                     </select>
                     <button id="payerFiltrBtn">Filtruj</button><br/>
+                    <select id="plusOrMinusFiltr">
+                        <option value="true">Przychody</option>
+                        <option value="false">Wydatki</option>
+                    </select>
+                    <button id="plusOrMinusBtn">Filtruj</button><br/>
                 </div>
                 <table>
                     <tr>
