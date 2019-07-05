@@ -53,4 +53,8 @@ public class BillDetails {
     public void setBill(Bill bill) {
         this.bill = bill;
     }
+
+    public void addValue(BigDecimal bigDecimal){
+        this.value = this.value.add(bigDecimal);
+    }
 }

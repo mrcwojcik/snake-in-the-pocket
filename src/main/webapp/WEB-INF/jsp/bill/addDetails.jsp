@@ -15,11 +15,9 @@
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
             <form:form modelAttribute="billDetails" method="post">
-                ${bill.id}
-                ${bille}
                 <form:hidden path="bill" value="${bill.id}"/>
-                <form:select path="category" items="${categories}" itemLabel="categoryName" itemValue="id"/><br/>
-                <form:input path="value"/><form:errors path="value"/>
+                <div class="labelToForm">Wybierz kategorię: </div> <form:select path="category" items="${categories}" itemLabel="categoryName" itemValue="id" cssClass="addForm"/><br/>
+                <div class="labelToForm">Podaj wartość:</div> <form:input path="value" cssClass="addForm"/><form:errors path="value"/><br/>
                 <input type="submit" value="Dodaj"/><br/>
             </form:form>
             <c:forEach items="${bill.billDetails}" var="billDetail">

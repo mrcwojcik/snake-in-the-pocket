@@ -15,7 +15,7 @@
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
             <form:form modelAttribute="payer" method="post">
-                Nazwa: <form:input path="name"/><form:errors path="name"/><br/>
+                <div class="labelToForm">Nazwa:</div> <form:input path="name" cssClass="addForm"/><form:errors path="name"/><br/>
                 <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
                 <input type="submit" value="Dodaj nowego płatnika"/>
             </form:form>

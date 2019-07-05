@@ -15,8 +15,8 @@
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
             <form:form modelAttribute="goal" method="post">
-                Cel: <form:input path="name"/><form:errors path="name"/><br/>
-                Wartość celu: <form:input path="goalValue"/><form:errors path="goalValue"/><br/>
+                <div class="labelToForm">Cel:</div> <form:input path="name" cssClass="addForm"/><form:errors path="name"/><br/>
+                <div class="labelToForm">Wartość celu:</div> <form:input path="goalValue" cssClass="addForm"/><form:errors path="goalValue"/><br/>
                 <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
                 <input type="submit" value="Dodaj cel"/>
             </form:form>

@@ -35,7 +35,7 @@
                     </select>
                     <button id="plusOrMinusBtn">Filtruj</button><br/>
                 </div>
-                <table>
+                <table class="mainTable">
                     <tr>
                         <th>Nr transakcji</th>
                         <th>Kto</th>
@@ -77,6 +77,7 @@
                         </c:otherwise>
                     </c:choose>
                 </table>
+                <a href="/admin/generate/pdf">Wygeneruj do PDF listę WSZYSTKICH TRANSAKCJI</a>
             </div>
         </div>
         <div class="clear"></div>

@@ -8,5 +8,6 @@ import java.util.List;
 public interface BillDetailsRepository extends JpaRepository<BillDetails, Long> {
 
     List<BillDetails> findByBillId(long id);
+    BillDetails findByCategoryIdAndBill_Id(long categoryId, long billId);
 
 }

@@ -16,9 +16,16 @@
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
             <div id="categories">
-                <c:forEach items="${categories}" var="category">
-                    <div class="category">${category.categoryName}</div>
-                </c:forEach>
+                <table class="mainTable">
+                    <tr>
+                        <th>Nazwa</th>
+                    </tr>
+                    <c:forEach items="${categories}" var="category">
+                        <tr>
+                            <td>${category.categoryName}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
             </div>
         </div>
         <div class="clear"></div>
