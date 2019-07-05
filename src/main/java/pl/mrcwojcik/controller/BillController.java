@@ -1,5 +1,6 @@
 package pl.mrcwojcik.controller;
 
+import org.apache.commons.lang.SerializationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -78,8 +79,6 @@ public class BillController {
     public String addBillDetails(@PathVariable Long id, Model model){
         if (billRepository.findById(id).isPresent()){
             model.addAttribute("bill", billRepository.findById(id).get());
-        } else {
-            model.addAttribute("bille", "dupa");
         }
         model.addAttribute("billDetails", new BillDetails());
         return "bill/addDetails";
@@ -91,8 +90,21 @@ public class BillController {
             return "bill/addDetails";
         }
 
-        BillDetails details = billDetailsRepository.save(billDetails);
-        return "redirect:/admin/transaction/addDetails/" + details.getBill().getId();
+        if (billDetailsRepository.findByCategoryIdAndBill_Id(billDetails.getCategory().getId(), billDetails.getBill().getId()) != null){
+            BillDetails existDetails = billDetailsRepository.findByCategoryIdAndBill_Id(billDetails.getCategory().getId(), billDetails.getBill().getId());
+            existDetails.addValue(billDetails.getValue());
+            billDetailsRepository.save(existDetails);
+            return "redirect:/admin/transaction/addDetails/" + existDetails.getBill().getId();
+        }
+
+        BillDetails newDetails = new BillDetails();
+        newDetails.setValue(billDetails.getValue());
+        newDetails.setBill(billDetails.getBill());
+        newDetails.setCategory(billDetails.getCategory());
+        billDetailsRepository.save(newDetails);
+
+//        BillDetails details = billDetailsRepository.save(billDetails);
+        return "redirect:/admin/transaction/addDetails/" + newDetails.getBill().getId();
     }
 
     @GetMapping("/endOfAdding/{id}")

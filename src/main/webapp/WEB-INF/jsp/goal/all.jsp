@@ -16,7 +16,7 @@
         <%@include file="../include/sidebar.jsp" %>
         <div id="panel">
             <div id="goals">
-                <table>
+                <table class="mainTable">
                     <tr>
                         <th>Nazwa celu</th>
                         <th>Wartość celu:</th>
@@ -36,11 +36,11 @@
                 <h2>Obliczenia dla celu:</h2>
                 <p>Wybierz, dla jakich kont chcesz policzyć ile brakuje do realizacji celu:</p>
                 <form:form modelAttribute="goalCalculate" method="post">
-                    <form:select path="accounts" multiple="true" items="${accounts}" itemValue="id" itemLabel="nameAndBalance"></form:select><br/>
-                    <form:select path="goal" items="${goals}" itemValue="id" itemLabel="name"></form:select><br/>
-                    Wybierz:
-                    <button id="timeGoalBtn">Ile muszę odkładać, żeby osiągnąć cel w wybranym czasie</button>
-                    <button id="contributionBtn">Ile będę zbierał, jeśli co miesiąc odłożę</button><br/>
+                    <form:select path="accounts" multiple="true" items="${accounts}" itemValue="id" itemLabel="nameAndBalance" cssClass="addForm"></form:select><br/>
+                    <form:select path="goal" items="${goals}" itemValue="id" itemLabel="name" cssClass="addForm"></form:select><br/>
+                    <h3>Co chcesz obliczyć:</h3>
+                    <button id="timeGoalBtn" class="reportBtn">Ile muszę odkładać, żeby osiągnąć cel w wybranym czasie</button>
+                    <button id="contributionBtn" class="reportBtn">Ile będę zbierał, jeśli co miesiąc odłożę</button><br/>
                     <div id="timeQuestion" style="display: none">Wskaż (w miesiącach), ile chcesz oszczędzać <form:input path="time" value="0"/></div><br/>
                     <div id="contributionQuestion" style="display:none;">Wskaż, ile będziesz odkładać miesięcznie <form:input path="contribution" value="0"/></div><br/>
                     <input type="submit" value="Oblicz"/>

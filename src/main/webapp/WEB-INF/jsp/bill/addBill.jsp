@@ -19,10 +19,10 @@
             </c:if>
             <c:if test="${!empty payers}">
                 <form:form modelAttribute="bill" method="post">
-                    Wydatek: <form:radiobutton path="plusOrMinus" value="false"/> || Przychód: <form:radiobutton path="plusOrMinus" value="true"/><br/>
-                    Kto: <form:select path="payer" items="${payers}" itemLabel="name" itemValue="id"/> <a href="/admin/payer/addFromBill">Dodaj kolejnego płatnika</a> <br/>
+                    Wydatek: <form:radiobutton path="plusOrMinus" value="false" />  Przychód: <form:radiobutton path="plusOrMinus" value="true"/><br/>
+                    <div class="labelToForm">Kto:</div><form:select path="payer" items="${payers}" itemLabel="name" itemValue="id" cssClass="addForm"/><br/> <a href="/admin/payer/addFromBill">Dodaj kolejnego płatnika</a> <br/><br/>
                     <c:if test="${empty account}">
-                        Konto: <form:select path="account" items="${accounts}" itemLabel="accountName" itemValue="id"/><br/>
+                        <div class="labelToForm">Konto:</div> <form:select path="account" items="${accounts}" itemLabel="accountName" itemValue="id" cssClass="addForm"/><br/>
                     </c:if>
                     <c:if test="${!empty account}">
                         Wybrałeś konto: ${account.accountName}. <form:hidden path="account" value="${account.id}"/>

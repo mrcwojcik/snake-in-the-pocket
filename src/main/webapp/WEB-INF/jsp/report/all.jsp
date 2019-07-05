@@ -15,68 +15,72 @@
     <div id="adminContent">
         <%@include file="../include/sidebar.jsp" %>
         <div id="panel">
-            <h2>Jaki okres chcesz sprawdzić?</h2>
-            <select id="time">
+            <h3>Jaki okres chcesz sprawdzić?</h3>
+            <select id="time" class="reportForm">
                 <option value="1">Ostatni miesiąc</option>
                 <option value="3">Trzy miesiące</option>
                 <option value="6">Sześć miesięcy</option>
                 <option value="12">Ostatni rok</option>
                 <option value="0">Od początku</option>
             </select><br/>
-            <h2>Filtruj raporty po koncie</h2>
-            <select id="accountToReport">
+            <h3>Filtruj raporty po koncie</h3>
+            <select id="accountToReport" class="reportForm">
                 <c:forEach items="${accounts}" var="account">
                     <option value="${account.id}">${account.accountName}</option>
                 </c:forEach>
             </select>
-            <button id="accountReportBtn">Filtruj po ogólnych danych z kont</button>
+            <button id="accountReportBtn" class="reportBtn">Filtruj po ogólnych danych z kont</button>
             <br/>
-            <h2>Filtruj raporty po kategorii</h2>
-            <select id="categoryToReport">
+            <h3>Filtruj raporty po kategorii</h3>
+            <select id="categoryToReport" class="reportForm">
                 <c:forEach items="${categories}" var="category">
                     <option value="${category.id}">${category.categoryName}</option>
                 </c:forEach>
             </select>
-            <button id="categoryReportBtn">Filtruj po kategoriach</button>
+            <button id="categoryReportBtn" class="reportBtn">Filtruj po kategoriach</button>
             <br/>
-            <h2>Filtruj raporty po płatniku</h2>
-            <select id="payerToReport">
+            <h3>Filtruj raporty po płatniku</h3>
+            <select id="payerToReport" class="reportForm">
                 <c:forEach items="${payers}" var="payer">
                     <option value="${payer.id}">${payer.name}</option>
                 </c:forEach>
             </select>
-            <button id="payerReportBtn">Filtruj po płatnikach</button>
+            <button id="payerReportBtn" class="reportBtn">Filtruj po płatnikach</button>
             <br/>
             <p>=====================================================</p><br/>
-            <h2>WYNIKI</h2>
-            Wydano: ${valueOnMinus}<br/>
-            Przybyło: ${valueOnPlus}<br/>
-            Difference: <c:set var="total" value="${valueOnPlus - valueOnMinus}"/><c:out value="${total}"/><br/>
-            <p>=================</p><br/>
-            <p>Lista wszystkich rachunków po filtrowaniu</p>
-            <table>
-                <tr>
-                    <th>Data dodania</th>
-                    <th>Bank</th>
-                    <th>Na co wydano</th>
-                    <th>Wartość rachunku</th>
-                </tr>
-                <c:forEach items="${reportBills}" var="bill">
+            <c:if test="${!empty reportBills}">
+                <h2>WYNIKI</h2>
+                Wydano: ${valueOnMinus}<br/>
+                Przybyło: ${valueOnPlus}<br/>
+                Difference: <c:set var="total" value="${valueOnPlus - valueOnMinus}"/><c:out value="${total}"/><br/>
+                <p>=================</p><br/>
+                <p>Lista wszystkich rachunków po filtrowaniu</p>
+                <table class="mainTable">
                     <tr>
-                        <td>${bill.created}</td>
-                        <td>${bill.account.accountName}</td>
-                        <td>
-                            <c:forEach items="${bill.billDetails}" var="detail">
-                                ${detail.category.categoryName},
-                            </c:forEach>
-                        </td>
-                        <td>${bill.billValue}</td>
-                        <c:if test="${bill.plusOrMinus}">
-                            <td>WPŁYW!</td>
-                        </c:if>
+                        <th>Data dodania</th>
+                        <th>Bank</th>
+                        <th>Na co wydano</th>
+                        <th>Wartość rachunku</th>
                     </tr>
-                </c:forEach>
-            </table>
+                    <c:forEach items="${reportBills}" var="bill">
+                        <c:if test="${bill.plusOrMinus}">
+                            <tr class="incomeRow">
+                        </c:if>
+                        <c:if test="${!bill.plusOrMinus}">
+                            <tr>
+                        </c:if>
+                            <td>${bill.created}</td>
+                            <td>${bill.account.accountName}</td>
+                            <td>
+                                <c:forEach items="${bill.billDetails}" var="detail">
+                                    ${detail.category.categoryName},
+                                </c:forEach>
+                            </td>
+                            <td><c:if test="${!bill.plusOrMinus}">-</c:if> ${bill.billValue}zł</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:if>
         </div>
         <div class="clear"></div>
     </div>

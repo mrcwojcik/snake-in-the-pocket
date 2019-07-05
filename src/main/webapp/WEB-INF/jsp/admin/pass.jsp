@@ -18,12 +18,11 @@
             <form:form modelAttribute="user">
                 <form:hidden path="id"/>
                 <form:hidden path="firstName"/><form:hidden path="lastName"/><form:hidden path="email"/>
-                Nowe hasło: <form:password path="password"/><form:errors path="password"/><br/>
-                Powtórz nowe hasło: <input type="password" name="checkNewPass"/><br/>
+                <div class="labelToForm">Nowe hasło: </div> <form:password path="password" cssClass="addForm"/><form:errors path="password"/><br/>
+                <div class="labelToForm">Powtórz nowe hasło:</div> <input type="password" name="checkNewPass" class="addForm"/><br/>
                 ${info}
                 <input type="submit" value="Zmień hasło">
             </form:form>
-            <a href="/admin/pass" id="changePass">Zmiana hasła</a>
         </div>
         <div class="clear"></div>
     </div>

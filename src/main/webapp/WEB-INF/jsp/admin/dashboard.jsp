@@ -18,7 +18,7 @@
         <div id="panel">
             <div id="accounts">
                 <c:if test="${fn:length(accounts) > 0}">
-                    <table>
+                    <table class="mainTable">
                         <tr>
                             <th>Nazwa konta</th>
                             <th>Stan konta</th>

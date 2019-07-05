@@ -15,7 +15,7 @@
         <%@include file="../include/sidebar.jsp" %>
         <div id="panel">
             <div id="accounts">
-                <table>
+                <table class="mainTable">
                     <tr>
                         <th>Nazwa konta</th>
                         <th>Stan konta</th>

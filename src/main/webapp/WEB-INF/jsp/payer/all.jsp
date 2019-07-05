@@ -16,9 +16,20 @@
         <%@include file="../include/sidebar.jsp"%>
         <div id="panel">
             <div id="accounts">
-                <c:forEach items="${payers}" var="payer">
-                    <div class="account">${payer.name} - <a href="/admin/payer/edit/${payer.id}">Edytuj</a> || <a href="/admin/payer/delete/${payer.id}">Usuń</a> </div>
-                </c:forEach>
+                <table class="mainTable">
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Edycja</th>
+                        <th>Usuń</th>
+                    </tr>
+                    <c:forEach items="${payers}" var="payer">
+                        <tr>
+                            <td>${payer.name}</td>
+                            <td><a href="/admin/payer/edit/${payer.id}">Edytuj</a></td>
+                            <td><a href="/admin/payer/delete/${payer.id}">Usuń</a></td>
+                        </tr>
+                    </c:forEach>
+                </table>
                 <div class="clear"></div>
             </div>
         </div>

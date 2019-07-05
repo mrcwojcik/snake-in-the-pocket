@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.MediaType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -14,9 +15,11 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import pl.mrcwojcik.converter.*;
 import pl.mrcwojcik.entity.Bill;
 import pl.mrcwojcik.entity.User;
+import pl.mrcwojcik.pdfgenerator.PDFBuilder;
 
 import javax.persistence.EntityManagerFactory;
 import javax.validation.Validator;
@@ -55,6 +58,16 @@ public class AppConfig implements WebMvcConfigurer {
                 new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
+
+    @Bean
+    public ViewResolver resourceBundleViewResolver() {
+
+        ResourceBundleViewResolver viewResolver = new ResourceBundleViewResolver();
+        viewResolver.setBasename("views");
+        viewResolver.setOrder(1);
+
         return viewResolver;
     }
 
