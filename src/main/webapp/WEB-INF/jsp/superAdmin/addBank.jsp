@@ -17,7 +17,7 @@
             <div id="accounts">
                 <form:form modelAttribute="bank">
                     <form:hidden path="id"/>
-                    Nazwa: <form:input path="name"/>
+                    <div class="labelToForm">Nazwa:</div><form:input path="name" cssClass="addForm"/>
                     <input type="submit" value="Dodaj"/>
                 </form:form><br/>
                 <a href="/superAdmin/banks">WRÓĆ DO LISTY BANKÓW</a><br/>

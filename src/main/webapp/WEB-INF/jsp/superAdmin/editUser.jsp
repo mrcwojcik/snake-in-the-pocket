@@ -18,11 +18,11 @@
                 <h2>Dane podstawowe</h2>
                 <form:form modelAttribute="user">
                     <form:hidden path="id"/>
-                    Imię: <form:input path="firstName"/><form:errors path="firstName"/><br/>
-                    Nazwisko: <form:input path="lastName"/><form:errors path="lastName"/><br/>
-                    E-Mail: <form:input path="email"/><form:errors path="email"/><br/>
-                    Nowe hasło: <form:password path="password"/><form:errors path="password"/><br/>
-                    Dać uprawnienia admina? <form:checkbox path="superadmin"/>
+                    <div class="labelToForm">Imię:</div> <form:input path="firstName" cssClass="addForm"/><form:errors path="firstName"/><br/>
+                    <div class="labelToForm">Nazwisko:</div> <form:input path="lastName" cssClass="addForm"/><form:errors path="lastName"/><br/>
+                    <div class="labelToForm">E-Mail:</div> <form:input path="email" cssClass="addForm"/><form:errors path="email"/><br/>
+                    <div class="labelToForm">Nowe hasło:</div> <form:password path="password" cssClass="addForm"/><form:errors path="password"/><br/>
+                    Dać uprawnienia admina? <form:checkbox path="superadmin"/><br/>
                     <input type="submit" value="Zmień dane"/>
                 </form:form><br/>
                 <a href="/superAdmin/users">WRÓĆ DO LISTY USERÓW</a><br/>

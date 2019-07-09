@@ -20,7 +20,7 @@
 
                 <h2>Konta</h2>
 
-                <table>
+                <table class="mainTable">
                     <tr>
                         <th>Nazwa konta</th>
                         <th>Stan konta</th>
@@ -36,18 +36,24 @@
                 </table>
 
                 <h2>Płatnicy</h2>
-
-                <c:forEach items="${user.payers}" var="payer">
-                    <div class="account">${payer.name} </div>
-                </c:forEach>
+                <table class="mainTable">
+                    <tr>
+                        <th>Nazwa</th>
+                    </tr>
+                    <c:forEach items="${user.payers}" var="payer">
+                        <tr>
+                            <td>${payer.name}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
 
                 <h2>Cele</h2>
-                <table>
+                <table class="mainTable">
                     <tr>
                         <th>Nazwa celu</th>
                         <th>Wartość celu:</th>
                     </tr>
-                    <c:forEach items="${goals}" var="goal">
+                    <c:forEach items="${user.goals}" var="goal">
                         <tr>
                             <td>${goal.name}</td>
                             <td>${goal.goalValue} zł</td>

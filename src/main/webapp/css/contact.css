@@ -1,0 +1,170 @@
+.contact100-form-title {
+    width: 98%;
+    position: relative;
+    z-index: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    padding: 64px 15px 64px 15px;
+}
+
+.mainImg {
+    height: 150px;
+}
+
+.contact100-form-title-1 {
+    font-family: Poppins-Bold;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    padding-bottom: 7px;
+}
+
+.mainTxt {
+    font-size: 50px;
+}
+
+.contact100-form-title-2 {
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+.contact100-form-title::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(54,84,99,0.7);
+}
+
+.header3 {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 55px;
+    font-weight: lighter;
+}
+
+.boxskillsinside{
+    width:100%;
+    margin:0 auto;
+    vertical-align:middle;
+    text-align:left;
+    position: relative;
+    display: inline-block; }
+
+.skillsimg{
+    position:relative;
+    padding:0%;
+    width:23%;
+    display:inline-block;
+    float:left;
+    margin:1% 1% 0% 1%; }
+.skillsimg:first-child{
+    margin-left: 0%; }
+.skillsimg:last-child{
+    margin-right: 0%; }
+
+.cont_skillstext{
+    width:85%;
+    margin:0 auto;
+    text-align: center; }
+
+.skilldesc{
+    margin:0 auto;
+    /*text-align:left;*/ }
+
+.proj_title{
+    font-size: 1.358em;
+    font-weight: 600;
+    letter-spacing: .6px;
+    text-transform:uppercase;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'PT Sans', sans-serif;
+    line-height:1;
+    margin:25px auto;
+    text-align: center;
+}
+
+.skills_container .boxskillsinside .skillsimg:nth-child(4) .proj_title{
+    min-width: 240px; }
+
+.proj_desc{
+    font-size: 1.2em;
+    color:#444444;
+    line-height:1.5;
+    letter-spacing: .015em;
+    font-weight:300;
+    font-family:'Open Sans', Arial, Helvetica, sans-serif; }
+
+#contactSection {
+    width: 80%;
+    margin-top: 5px;
+    margin-left: 250px;
+}
+
+#contactInfo {
+    float: left;
+    width: 40%;
+    min-height: 470px;
+}
+
+#contactInfo h2 {
+    color: black;
+    text-align: center;
+    font-size: 30px;
+}
+
+div.transbox {
+    margin: 80px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.section {
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.section p {
+    color: black;
+    margin: 10px;
+    /*display: inline-block;*/
+}
+
+.section img {
+    max-width: 20px;
+    min-width: 10px;
+}
+
+.secTitle {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#contactForm {
+    float: left;
+    width: 55%;
+    margin-left: 50px;
+}

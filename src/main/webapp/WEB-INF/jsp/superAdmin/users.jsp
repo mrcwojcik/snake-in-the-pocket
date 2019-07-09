@@ -15,7 +15,7 @@
     <div id="adminContent">
         <div id="panel">
             <div id="accounts">
-                <table>
+                <table class="mainTable">
                     <tr>
                         <th>ID</th>
                         <th>E-MAIL:</th>

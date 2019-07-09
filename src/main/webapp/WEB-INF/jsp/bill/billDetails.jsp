@@ -15,7 +15,7 @@
         <%@include file="../include/sidebar.jsp" %>
         <div id="panel">
             <div id="accounts">
-                <table>
+                <table class="mainTable">
                     <tr>
                         <th>Nr transakcji</th>
                         <th>Kto</th>
@@ -29,7 +29,7 @@
                         <td>${bill.payer.name}</td>
                         <td>${bill.plusOrMinus}</td>
                         <td>${bill.account.accountName}</td>
-                        <td>${bill.billValue}</td>
+                        <td>${bill.billValue} zł</td>
                         <td>${bill.created}</td>
                     </tr>
                 </table>

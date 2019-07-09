@@ -1,12 +1,10 @@
 package pl.mrcwojcik.controller;
 
-import org.apache.commons.lang.SerializationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.jsf.FacesContextUtils;
 import pl.mrcwojcik.entity.*;
 import pl.mrcwojcik.repositories.*;
 import pl.mrcwojcik.service.AccountService;

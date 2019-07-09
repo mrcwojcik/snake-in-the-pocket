@@ -16,13 +16,12 @@
         <div id="panel">
             <div id="accounts">
                 <a href="/superAdmin/add/category/">Dodaj nową kategorię</a><br/>
-                <table>
+                <table class="mainTable">
                     <tr>
                         <th>ID</th>
                         <th>NAZWA</th>
                         <th>Edycja</th>
 <%--                        <th>Usuń</th>--%>
-                        <th></th>
                     </tr>
                     <c:forEach items="${categories}" var="category">
                         <tr>

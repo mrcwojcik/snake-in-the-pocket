@@ -14,9 +14,25 @@
         <div id="panel">
             <div id="accounts">
                     <h2>Szczegóły:</h2>
-                <c:forEach items="${bills}" var="detail">
-                    ${detail.category.categoryName}: ${detail.value} <br/>
-                </c:forEach>
+                <table class="mainTable">
+                    <tr>
+                        <th>Nr rachunku</th>
+                        <th>Wartość rachunku</th>
+                        <th>Kategorie zakupowe</th>
+                    </tr>
+                        <c:forEach items="${bills}" var="bill">
+                            <tr>
+                                <td>${bill.id}</td>
+                                <td>${bill.billValue}</td>
+                                <td>
+                                    <c:forEach items="${bill.billDetails}" var="detail">
+                                        ${detail.category.categoryName},
+                                    </c:forEach>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                </table>
+
             </div><br/>
             <a href="/superAdmin/users">WRÓĆ DO LISTY USERÓW</a><br/>
             <a href="/superAdmin/">WRÓĆ DO GŁÓWNEGO PANELU</a>

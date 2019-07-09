@@ -52,10 +52,10 @@
                         Tyle Ci brakuje, żeby spełnić cel: ${calculate.difference} zł<br/>
                         Taki status realizacji masz zrobiony: ${calculate.goalStatus}%<br/>
                         <c:if test="${calculate.timeToGoal < 0}">
-                            Tyle czaus potrzebujesz, żeby osiągnąć cel: ${calculate.timeToGoal} miesięcy<br/>
+                            Tyle czasu potrzebujesz, żeby osiągnąć cel: ${calculate.timeToGoal * -1} miesięcy<br/>
                         </c:if>
                         <c:if test="${calculate.monthContribution < 0}">
-                            Tyle musisz oszdzędzać miesięcznie, żeby osiągnąć zakładany cel: ${calculate.monthContribution} złotych<br/>
+                            Tyle musisz oszdzędzać miesięcznie, żeby osiągnąć zakładany cel: ${calculate.monthContribution * -1} złotych<br/>
                         </c:if>
                     </div>
                 </c:if>

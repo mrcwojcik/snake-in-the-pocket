@@ -6,18 +6,28 @@
     <title>Rejestracja - Snake in The Pocket</title>
     <%@include file="include/meta.jsp"%>
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/contact.css"/>">
 </head>
 <body>
     <div id="container">
         <%@include file="include/homeMenu.jsp"%>
         <div id="content">
-            <div id="form">
-                <h2>Rejestracja</h2>
+            <div class="contact100-form-title"
+                 style="background-image: url(https://images3.alphacoders.com/882/882548.jpg);">
+				<span class="contact100-form-title-1">
+					Zarejestruj się
+				</span>
+                <span class="contact100-form-title-2">
+					Urzędnicy zaczną płakać, bo będziesz miał lepszą organizację pieniędzy niż ZUS emerytur.
+				</span>
+            </div>
+            <div id="registerForm">
                 <form:form modelAttribute="user" method="post">
-                    E-Mail (login): <form:input path="email" required="required"/><form:errors path="email"/><br/>
-                    Hasło: <form:password path="password"/><form:errors path="password"/><br/>
-                    Imie: <form:input path="firstName"/><form:errors path="firstName"/><br/>
-                    Nazwisko: <form:input path="lastName"/><form:errors path="lastName"/><br/>
+                    <div class="labelToForm">E-Mail (Login):</div> <form:input path="email" required="required" cssClass="addForm"/><form:errors path="email"/><br/>
+                    <div class="labelToForm">Hasło:</div> <form:password path="password" cssClass="addForm"/><form:errors path="password"/><br/>
+                    <div class="labelToForm">Imię:</div> <form:input path="firstName" cssClass="addForm"/><form:errors path="firstName"/><br/>
+                    <div class="labelToForm">Nazwisko:</div> <form:input path="lastName" cssClass="addForm"/><form:errors path="lastName"/><br/>
                     <input type="submit" value="Zarejestruj się">
                 </form:form>
             </div>

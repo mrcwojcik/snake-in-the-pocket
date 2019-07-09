@@ -13,7 +13,7 @@
         <li class="dropdown-btn">Transakcje <i class="arrow down"></i></li>
             <ul class="sidebarHidden">
                 <li><a href="/admin/transaction/">Wszystkie transakcje</a></li>
-                <li><a href="/admin/transaction/add">Dodaj transakcje transakcje</a></li>
+                <li><a href="/admin/transaction/add">Dodaj transakcje</a></li>
                 <li><a href="/admin/category/">Lista kategorii</a></li>
                 <li><a href="/admin/payer/">Lista płatników</a></li>
                 <li><a href="/admin/payer/add">Dodaj płatnika</a></li>

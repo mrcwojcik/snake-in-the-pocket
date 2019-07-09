@@ -50,9 +50,9 @@
             <p>=====================================================</p><br/>
             <c:if test="${!empty reportBills}">
                 <h2>WYNIKI</h2>
-                Wydano: ${valueOnMinus}<br/>
-                Przybyło: ${valueOnPlus}<br/>
-                Difference: <c:set var="total" value="${valueOnPlus - valueOnMinus}"/><c:out value="${total}"/><br/>
+                Wydano: ${valueOnMinus} zł<br/>
+                Przybyło: ${valueOnPlus} zł<br/>
+                Difference: <c:set var="total" value="${valueOnPlus - valueOnMinus}"/><c:out value="${total}"/> zł<br/>
                 <p>=================</p><br/>
                 <p>Lista wszystkich rachunków po filtrowaniu</p>
                 <table class="mainTable">

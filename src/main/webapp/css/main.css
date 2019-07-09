@@ -11,10 +11,16 @@
 
 #container {
     width: 100%;
+    min-height: 735px;
 }
 
 #nav {
     width: 90%;
+}
+
+#nav img {
+    max-width: 30px;
+    min-width: 20px
 }
 
 #logo {
@@ -89,25 +95,84 @@ img {
 
 
 .myButton {
-    background-color:#7892c2;
-    -moz-border-radius:7px;
-    -webkit-border-radius:7px;
-    border-radius:7px;
-    border:1px solid #4e6096;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:26px;
-    padding:21px 56px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #283966;
+    outline: none;
+    text-decoration: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 80px;
+    width: 230px;
+    opacity: 1;
+    background-color: #ffffff;
+    color: black;
+    border: 1px solid black;
+    float: left;
+    margin-right: 10px;
 }
-.myButton:hover {
-    background-color:#476e9e;
-}
+
+
 .myButton:active {
     position:relative;
     top:1px;
 }
 
+#footer {
+    width: 100%;
+    display: inline-block;
+
+}
+
+#loginForm {
+    width: 65%;
+    margin-left: 500px;
+    margin-top: 50px;
+}
+
+#registerForm {
+    width: 65%;
+    margin-left: 500px;
+    margin-top: 50px;
+}
+
+#services {
+    width: 100%;
+    margin-top: 150px;
+}
+
+#services hr {
+    width: 35%;
+    margin-top: -40px;
+}
+
+#team hr {
+    width: 35%;
+    margin-top: -40px;
+    margin-bottom: 50px;
+}
+
+#team {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.person {
+    width: 30%;
+    float: left;
+    margin-left: 50px;
+}
+
+.personImg {
+    width: 80%;
+}
+
+.personImg img {
+    min-width: 370px;
+}
+
+.personName {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+}

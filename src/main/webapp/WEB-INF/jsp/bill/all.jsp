@@ -17,29 +17,28 @@
         <div id="panel">
             <div id="accounts">
                 <div class="sortTransaction">
-                    <select id="accountFiltr">
+                    <select id="accountFiltr" class="soflow">
                         <c:forEach items="${accounts}" var="account">
                             <option value="${account.id}">${account.accountName}</option>
                         </c:forEach>
                     </select>
-                    <button id="accountFiltrBtn">Filtruj</button><br/>
-                    <select id="payerFiltr">
+                    <button id="accountFiltrBtn" class="reportBtn">Filtruj</button><br/>
+                    <select id="payerFiltr" class="soflow">
                         <c:forEach items="${payers}" var="payer">
                             <option value="${payer.id}">${payer.name}</option>
                         </c:forEach>
                     </select>
-                    <button id="payerFiltrBtn">Filtruj</button><br/>
-                    <select id="plusOrMinusFiltr">
+                    <button id="payerFiltrBtn" class="reportBtn">Filtruj</button><br/>
+                    <select id="plusOrMinusFiltr" class="soflow">
                         <option value="true">Przychody</option>
                         <option value="false">Wydatki</option>
                     </select>
-                    <button id="plusOrMinusBtn">Filtruj</button><br/>
+                    <button id="plusOrMinusBtn" class="reportBtn">Filtruj</button><br/>
                 </div>
                 <table class="mainTable">
                     <tr>
                         <th>Nr transakcji</th>
                         <th>Kto</th>
-                        <th>Plus or Minus</th>
                         <th>Konto</th>
                         <th>Suma</th>
                         <th>Data</th>
@@ -52,9 +51,8 @@
                                 <tr>
                                     <td>${bill.id}</td>
                                     <td>${bill.payer.name}</td>
-                                    <td>${bill.plusOrMinus}</td>
                                     <td>${bill.account.accountName}</td>
-                                    <td>${bill.billValue}</td>
+                                    <td><c:if test="${!bill.plusOrMinus}">-</c:if> ${bill.billValue} zł</td>
                                     <td>${bill.created}</td>
                                     <td><a href="/admin/transaction/billDetails/${bill.id}">Szczegóły</a></td>
                                     <td><a href="/admin/transaction/delete/${bill.id}">Usuń</a></td>
@@ -66,9 +64,8 @@
                                 <tr>
                                     <td>${bill.id}</td>
                                     <td>${bill.payer.name}</td>
-                                    <td>${bill.plusOrMinus}</td>
                                     <td>${bill.account.accountName}</td>
-                                    <td>${bill.billValue}</td>
+                                    <td><c:if test="${!bill.plusOrMinus}">-</c:if> ${bill.billValue} zł</td>
                                     <td>${bill.created}</td>
                                     <td><a href="/admin/transaction/billDetails/${bill.id}">Szczegóły</a></td>
                                     <td><a href="/admin/transaction/delete/${bill.id}">Usuń</a></td>
@@ -76,8 +73,10 @@
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>
-                </table>
-                <a href="/admin/generate/pdf">Wygeneruj do PDF listę WSZYSTKICH TRANSAKCJI</a>
+                </table><br/>
+                <button class="reportBtn">
+                    <a href="/admin/generate/pdf">Wygeneruj PDF - Wszystkie transakcje</a>
+                </button>
             </div>
         </div>
         <div class="clear"></div>

@@ -8,6 +8,7 @@ import pl.mrcwojcik.entity.Account;
 import pl.mrcwojcik.repositories.GoalRepository;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Service
 public class GoalService {
@@ -35,13 +36,17 @@ public class GoalService {
 
     public BigDecimal calculateMonthContribution(GoalCalculate goalCalculate){
         BigDecimal difference = calculateDifference(goalCalculate);
-        BigDecimal result = difference.divide(new BigDecimal(goalCalculate.getTime()));
+        System.out.println(difference);
+        BigDecimal result = difference.divide(new BigDecimal(goalCalculate.getTime()), 2, RoundingMode.HALF_EVEN);
+//        BigDecimal result2 = result.abs();
+//        BigDecimal result3 = result.negate();
+//        System.out.println(result3);
         return result;
     }
 
     public int calculateTimeToGoal(GoalCalculate goalCalculate){
         BigDecimal difference = calculateDifference(goalCalculate);
-        BigDecimal result = difference.divide(goalCalculate.getContribution());
+        BigDecimal result = difference.divide(goalCalculate.getContribution(), 2, RoundingMode.HALF_EVEN);
         return result.intValue();
     }
 

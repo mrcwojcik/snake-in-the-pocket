@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.mrcwojcik.entity.Bank;
 import pl.mrcwojcik.entity.Category;
+import pl.mrcwojcik.entity.Goal;
 import pl.mrcwojcik.entity.User;
 import pl.mrcwojcik.repositories.BankRepository;
 import pl.mrcwojcik.repositories.BillRepository;

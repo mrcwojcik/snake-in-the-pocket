@@ -16,13 +16,12 @@
         <div id="panel">
             <div id="accounts">
                 <a href="/superAdmin/add/bank/">Dodaj nowy bank</a><br/>
-                <table>
+                <table class="mainTable">
                     <tr>
                         <th>ID</th>
                         <th>NAZWA</th>
                         <th>Edycja</th>
 <%--                        <th>Usuń</th>--%>
-                        <th></th>
                     </tr>
                     <c:forEach items="${banks}" var="bank">
                         <tr>

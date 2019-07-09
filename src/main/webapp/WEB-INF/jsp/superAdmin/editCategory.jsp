@@ -18,7 +18,7 @@
                 <h2>Dane podstawowe</h2>
                 <form:form modelAttribute="category">
                     <form:hidden path="id"/>
-                    Nazwa: <form:input path="categoryName"/><br/>
+                    <div class="labelToForm">Nazwa:</div> <form:input path="categoryName" cssClass="addForm"/><br/>
                     <input type="submit" value="Dodaj"/>
                 </form:form><br/>
                 <a href="/superAdmin/categories">WRÓĆ DO LISTY KATEGORII</a><br/>

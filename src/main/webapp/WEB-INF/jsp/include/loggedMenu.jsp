@@ -4,7 +4,9 @@
 
 <div id="nav">
     <div id="logo">
-        <p id="logoFont"><a href="/admin/dashboard">Snake in The Pocket</a></p>
+        <p id="logoFont"><a href="/admin/dashboard"><img src="https://image.flaticon.com/icons/svg/578/578376.svg" width="20" height="20">  Snake in The Pocket</a></p>
+<%--        <div id="icon"><img src="https://image.flaticon.com/icons/svg/578/578376.svg" width="20" height="20"></div>--%>
+
     </div>
     <div id="menu">
         <ul class="menuOl">

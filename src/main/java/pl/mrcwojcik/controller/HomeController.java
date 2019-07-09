@@ -8,10 +8,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.mrcwojcik.additionals.ContactMessage;
 import pl.mrcwojcik.additionals.LoginAuth;
 import pl.mrcwojcik.entity.User;
 import pl.mrcwojcik.repositories.UserRepository;
 import pl.mrcwojcik.service.AuthenticationService;
+import pl.mrcwojcik.service.EmailServiceImpl;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -24,6 +26,9 @@ public class HomeController {
 
     @Autowired
     private AuthenticationService authenticationService;
+
+    @Autowired
+    EmailServiceImpl emailService;
 
     @GetMapping("/")
     public String showHomePage() {
@@ -76,8 +81,16 @@ public class HomeController {
     }
 
     @GetMapping("/contact")
-    public String contact(){
+    public String contact(Model model){
+        model.addAttribute("contactMessage", new ContactMessage());
         return "contact";
+    }
+
+    @PostMapping("/contact")
+    public String contactPOST(@ModelAttribute ContactMessage contactMessage){
+        String message = "Wiadomość od: " + contactMessage.getEmail() + " o treści: " + contactMessage.getMessage();
+        emailService.sendSimpleMessage("marta.mal.111@gmail.com", contactMessage.getEmail(), contactMessage.getSubject(), message);
+        return "redirect:/contact";
     }
 
     @GetMapping("/about")

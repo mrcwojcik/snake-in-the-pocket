@@ -6,16 +6,26 @@
     <title>Rejestracja - Snake in The Pocket</title>
     <%@include file="include/meta.jsp"%>
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/contact.css"/>">
 </head>
 <body>
 <div id="container">
     <%@include file="include/homeMenu.jsp"%>
     <div id="content">
-        <div id="form">
-            <h2>Login</h2>
+        <div class="contact100-form-title"
+             style="background-image: url(https://images3.alphacoders.com/882/882548.jpg);">
+				<span class="contact100-form-title-1">
+					Zaloguj się do serwisu
+				</span>
+            <span class="contact100-form-title-2">
+					Po zalogowaniu zyskasz władzę nad świa... swoimi finansami.
+				</span>
+        </div>
+        <div id="loginForm">
             <form:form modelAttribute="loginAuth" method="post">
-                E-Mail (login): <form:input path="email"/><br/>
-                Hasło: <form:password path="password"/><br/>
+                <div class="labelToForm">E-Mail (Login):</div> <form:input path="email" cssClass="addForm"/><br/>
+                <div class="labelToForm">Hasło:</div> <form:password path="password" cssClass="addForm"/><br/>
                 <input type="submit" value="Zaloguj się">
             </form:form>
         </div>
