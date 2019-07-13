@@ -130,6 +130,10 @@ input[type=submit]:hover {
     width: 150px;
 }
 
+.labelToFormBank {
+    width: 400px;
+}
+
 .reportBtn {
     background-color: #42a1f5;
     border-radius: 4px;;
@@ -170,4 +174,63 @@ h3 {
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 300px;
+}
+
+.radiocontainer {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    padding-right: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radioInput {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* On mouse-over, add a grey background color */
+.radioInput:hover ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radioInput:checked ~ .checkmark {
+    background-color: #45a049;
+}
+
+.radioInput:checked ~ .checkmark:after {
+    display: block;
+}
+
+.radiocontainer .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
 }

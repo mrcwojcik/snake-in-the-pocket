@@ -17,7 +17,7 @@
             <form:form modelAttribute="account" method="post">
                 <div class="labelToForm">Nazwa konta:</div> <form:input path="accountName" cssClass="addForm"/><form:errors path="accountName"/><br>
                 <div class="labelToForm">Stan konta: </div> <form:input path="startBalance" cssClass="addForm"/><form:errors path="startBalance"/><br>
-                <div class="labelToForm">Wybierz bank:</div> <form:select path="bank" cssClass="addForm" items="${banks}" itemLabel="name" itemValue="id"/><br>
+                <div class="labelToFormBank">Wybierz bank (na razie lista banków jest zamknięta):</div> <form:select path="bank" cssClass="addForm" items="${banks}" itemLabel="name" itemValue="id"/><br>
                 <form:hidden path="user" value="${user.id}"/><form:errors path="user"/><br/>
                 <input type="submit" value="Dodaj konto"/>
             </form:form>

@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Snake in The Pocket - Dashboard</title>
+    <title>Edytuj kategorię - Snake in The Pocket</title>
     <%@include file="../include/meta.jsp" %>
     <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">

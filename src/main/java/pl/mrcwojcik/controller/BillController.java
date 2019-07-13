@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import pl.mrcwojcik.entity.*;
 import pl.mrcwojcik.repositories.*;
 import pl.mrcwojcik.service.AccountService;
+import pl.mrcwojcik.service.BillService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,6 +36,9 @@ public class BillController {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private BillService billService;
 
     @GetMapping("/")
     public String allBills(){
@@ -170,8 +175,10 @@ public class BillController {
     }
 
     @ModelAttribute("allBills")
-    public List<Bill> getBillsByUser(){
-        return billRepository.findAll();
+    public List<Bill> getBillsByUser(HttpSession httpSession){
+        User user = (User) httpSession.getAttribute("loggedUser");
+        List<Account> accounts = accountRepository.findAllByUserId(user.getId());
+        return billService.getUserBills(accounts);
     }
 
     @ModelAttribute("payers")

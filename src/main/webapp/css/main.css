@@ -86,7 +86,7 @@ img {
 
 #buttonsSection {
     position: absolute;
-    right: 550px;
+    right: 500px;
     width: 500px;
     padding: 10px;
     margin-top: 20px;
@@ -165,11 +165,11 @@ img {
 }
 
 .personImg {
-    width: 80%;
+    width: 70%;
 }
 
 .personImg img {
-    min-width: 370px;
+    min-width: 330px;
 }
 
 .personName {

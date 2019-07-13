@@ -87,6 +87,20 @@ public class ReportController {
         return "report/all";
     }
 
+    @GetMapping("/mix/{payerId}/{categoryId}/{accountId}/{time}")
+    public String showMixReport(Model model, @PathVariable long payerId, @PathVariable long categoryId, @PathVariable long accountId, @PathVariable int time){
+        if (time == 0){
+            model.addAttribute("reportBills", billRepository.findAllByMixCriteria(categoryId, payerId, accountId));
+        } else {
+            model.addAttribute("reportBills", billRepository.findAllByMixByDateCriteria(categoryId, payerId, accountId, time));
+            model.addAttribute("valueOnMinus", billService.findMinusSUM(billRepository.findAllByMixCriteriaMINUS(categoryId, payerId, accountId, time)));
+            model.addAttribute("valueOnPlus", billService.findPlusSUM(billRepository.findAllByMixCriteriaPLUS(categoryId, payerId, accountId, time)));
+        }
+
+        return "report/all";
+    }
+
+
     @ModelAttribute("user")
     public User getFromSession(HttpSession httpSession){
         return (User) httpSession.getAttribute("loggedUser");

@@ -8,10 +8,10 @@ import javax.validation.constraints.NotNull;
 public class LoginAuth {
 
     @NotEmpty
-    @Email
+    @Email (message = "Podaj właściwy adres e-mail")
     private String email;
 
-    @NotEmpty
+    @NotEmpty (message = "Hasło nie może być puste")
     private String password;
 
     public LoginAuth() {

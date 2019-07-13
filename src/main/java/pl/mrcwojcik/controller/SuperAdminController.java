@@ -42,8 +42,7 @@ public class SuperAdminController {
     @GetMapping("/logout")
     public String logout(HttpSession httpSession){
         User user = (User) httpSession.getAttribute("superAdmin");
-        httpSession.setAttribute("superAdmin", user);
-        httpSession.setMaxInactiveInterval(0);
+        httpSession.setAttribute("superAdmin", null);
         return "redirect:/";
     }
 

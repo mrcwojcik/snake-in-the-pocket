@@ -1,6 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <html>
 <head>
     <title>Snake in The Pocket - Dashboard</title>
@@ -15,6 +17,7 @@
     <div id="adminContent">
         <%@include file="../include/sidebar.jsp" %>
         <div id="panel">
+            <c:if test="${fn:length(goals) > 0}">
             <div id="goals">
                 <table class="mainTable">
                     <tr>
@@ -60,6 +63,11 @@
                     </div>
                 </c:if>
             </div>
+            </c:if>
+            <c:if test="${fn:length(goals) == 0}">
+                Nie dodałeś jeszcze żadnego celu.<br/>
+                <a href="/admin/goals/add">Dodaj swój pierwszy cel</a>
+            </c:if>
         </div>
         <div class="clear"></div>
     </div>

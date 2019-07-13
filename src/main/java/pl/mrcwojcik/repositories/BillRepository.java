@@ -47,4 +47,20 @@ public interface BillRepository extends JpaRepository<Bill, Long> {
     @Query (value = "SELECT * FROM bills WHERE plusOrMinus = false AND account_id = ?1 AND created >= date_add(NOW(), INTERVAL -?1 MONTH);", nativeQuery = true)
     List<Bill> findAllByDateAndAccountMINUS(long id, int month);
 
+    @Query (value = "SELECT * FROM bills INNER JOIN billDetails ON bills.id = billDetails.bill_id " +
+            "WHERE category_id = ?1 AND payer_id = ?2 AND account_id = ?3)", nativeQuery = true)
+    List<Bill> findAllByMixCriteria(long categoryId, long payerId, long accountId);
+
+    @Query (value = "SELECT * FROM bills INNER JOIN billDetails ON bills.id = billDetails.bill_id " +
+            "WHERE category_id = ?1 AND payer_id = ?2 AND account_id = ?3 AND created >= date_add(NOW(), INTERVAL -?4 MONTH)", nativeQuery = true)
+    List<Bill> findAllByMixByDateCriteria(long categoryId, long payerId, long accountId, int month);
+
+    @Query (value = "SELECT * FROM bills INNER JOIN billDetails ON bills.id = billDetails.bill_id " +
+            "WHERE plusOrMinus = true AND category_id = ?1 AND payer_id = ?2 AND account_id = ?3 AND created >= date_add(NOW(), INTERVAL -?4 MONTH)", nativeQuery = true)
+    List<Bill> findAllByMixCriteriaPLUS(long categoryId, long payerId, long accountId, int month);
+
+    @Query (value = "SELECT * FROM bills INNER JOIN billDetails ON bills.id = billDetails.bill_id " +
+            "WHERE plusOrMinus = false AND category_id = ?1 AND payer_id = ?2 AND account_id = ?3 AND created >= date_add(NOW(), INTERVAL -?4 MONTH)", nativeQuery = true)
+    List<Bill> findAllByMixCriteriaMINUS(long categoryId, long payerId, long accountId, int month);
+
 }

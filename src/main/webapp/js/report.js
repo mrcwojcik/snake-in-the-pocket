@@ -16,4 +16,9 @@ $(document).ready(function () {
         window.location.href = url;
     });
 
+    $('#mixReportBtn').on('click', function () {
+        var url = "/admin/report/mix/" + $('#payerMixReport').val() + "/" + + $('#categoryMixReport').val() + "/" + $('#accountMixReport').val() + "/" + $('#time').val();
+        window.location.href = url;
+    })
+
 });

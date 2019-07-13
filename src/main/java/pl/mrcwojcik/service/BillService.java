@@ -2,12 +2,14 @@ package pl.mrcwojcik.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.mrcwojcik.entity.Account;
 import pl.mrcwojcik.entity.Bill;
 import pl.mrcwojcik.entity.BillDetails;
 import pl.mrcwojcik.repositories.BillDetailsRepository;
 import pl.mrcwojcik.repositories.BillRepository;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,6 +20,17 @@ public class BillService {
 
     @Autowired
     BillDetailsRepository billDetailsRepository;
+
+    public List<Bill> getUserBills(List<Account> accounts){
+        List<Bill> billList = new ArrayList<>();
+        for (Account a : accounts){
+            for (Bill b : a.getBills()){
+                billList.add(b);
+            }
+        }
+
+        return billList;
+    }
 
     public BigDecimal findPlusSUM(List<Bill> bills){
         BigDecimal sum = BigDecimal.ZERO;

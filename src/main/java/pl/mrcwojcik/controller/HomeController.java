@@ -58,7 +58,7 @@ public class HomeController {
     }
 
     @PostMapping("/login")
-    public String loginPOST(@ModelAttribute LoginAuth loginAuth, BindingResult result, HttpSession httpSession) {
+    public String loginPOST(@ModelAttribute @Valid LoginAuth loginAuth, BindingResult result, HttpSession httpSession, Model model) {
         if (result.hasErrors()){
             return "login";
         }
@@ -67,15 +67,19 @@ public class HomeController {
             if (user != null) {
                 if (user.isSuperadmin()){
                     httpSession.setAttribute("superAdmin", user);
+                    httpSession.setMaxInactiveInterval(2*60*60);
                     return "redirect:/superAdmin/";
                 } else {
                     httpSession.setAttribute("loggedUser", user);
+                    httpSession.setMaxInactiveInterval(2*60*60);
                     return "redirect:/admin/dashboard";
                 }
             } else {
+                model.addAttribute("errorTxt", "Podałeś złe hasło");
                 return "login";
             }
         } else {
+            model.addAttribute("errorTxt", "Nie ma takiego użytkownika w bazie");
             return "login";
         }
     }
@@ -89,7 +93,7 @@ public class HomeController {
     @PostMapping("/contact")
     public String contactPOST(@ModelAttribute ContactMessage contactMessage){
         String message = "Wiadomość od: " + contactMessage.getEmail() + " o treści: " + contactMessage.getMessage();
-        emailService.sendSimpleMessage("marta.mal.111@gmail.com", contactMessage.getEmail(), contactMessage.getSubject(), message);
+        emailService.sendSimpleMessage("maethi@gmail.com", contactMessage.getEmail(), contactMessage.getSubject(), message);
         return "redirect:/contact";
     }
 

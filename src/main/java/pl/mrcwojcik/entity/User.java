@@ -23,10 +23,10 @@ public class User {
     private String lastName;
 
     @Column (unique = true)
-    @Email
+    @Email (message = "Wpisz poprawnie adres e-mail")
     private String email;
 
-    @NotEmpty
+    @NotEmpty (message = "Hasło nie może być puste")
     private String password;
 
     @AssertFalse

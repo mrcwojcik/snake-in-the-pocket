@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Rejestracja - Snake in The Pocket</title>
+    <title>Logowanie - Snake in The Pocket</title>
     <%@include file="include/meta.jsp"%>
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
@@ -24,10 +24,11 @@
         </div>
         <div id="loginForm">
             <form:form modelAttribute="loginAuth" method="post">
-                <div class="labelToForm">E-Mail (Login):</div> <form:input path="email" cssClass="addForm"/><br/>
-                <div class="labelToForm">Hasło:</div> <form:password path="password" cssClass="addForm"/><br/>
+                <div class="labelToForm">E-Mail (Login):</div> <form:input path="email" cssClass="addForm"/><form:errors path="email"/> <br/>
+                <div class="labelToForm">Hasło:</div> <form:password path="password" cssClass="addForm"/><form:errors path="password"/> <br/>
                 <input type="submit" value="Zaloguj się">
             </form:form>
+            <b style="color: red">${errorTxt}</b>
         </div>
 
     </div>

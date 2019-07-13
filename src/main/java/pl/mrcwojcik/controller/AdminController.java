@@ -7,13 +7,18 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.mrcwojcik.entity.Account;
+import pl.mrcwojcik.entity.Bill;
+import pl.mrcwojcik.entity.Goal;
 import pl.mrcwojcik.entity.User;
 import pl.mrcwojcik.repositories.AccountRepository;
+import pl.mrcwojcik.repositories.GoalRepository;
 import pl.mrcwojcik.repositories.UserRepository;
+import pl.mrcwojcik.service.BillService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,6 +31,12 @@ public class AdminController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BillService billService;
+
+    @Autowired
+    private GoalRepository goalRepository;
+
     @GetMapping ("/dashboard")
     public String dashboard(){
         return "admin/dashboard";
@@ -34,8 +45,7 @@ public class AdminController {
     @GetMapping("/logout")
     public String logout(HttpSession httpSession){
         User user = getFromSession(httpSession);
-        httpSession.setAttribute("loggedUser", user);
-        httpSession.setMaxInactiveInterval(0);
+        httpSession.setAttribute("loggedUser", null);
         return "redirect:/";
     }
 
@@ -87,8 +97,7 @@ public class AdminController {
     public String deleteConfirm(@PathVariable Long id, HttpSession httpSession){
         User user = userRepository.findById(id).get();
         userRepository.delete(user);
-        httpSession.setAttribute("loggedUser", user);
-        httpSession.setMaxInactiveInterval(0);
+        httpSession.setAttribute("loggedUser", null);
         return "redirect:/";
     }
 
@@ -96,12 +105,24 @@ public class AdminController {
     @ModelAttribute ("accounts")
     public List<Account> getAllUserAccounts(HttpSession httpSession){
         return accountRepository.findAllByUserId(getFromSession(httpSession).getId());
-
     }
 
     public User getFromSession(HttpSession httpSession){
         User user = (User) httpSession.getAttribute("loggedUser");
         return user;
+    }
+
+    @ModelAttribute("allBills")
+    public List<Bill> getBillsByUser(HttpSession httpSession){
+        User user = (User) httpSession.getAttribute("loggedUser");
+        List<Account> accounts = accountRepository.findAllByUserId(user.getId());
+        return billService.getUserBills(accounts);
+    }
+
+    @ModelAttribute("goals")
+    public List<Goal> getGoals(HttpSession httpSession){
+        User user = (User) httpSession.getAttribute("loggedUser");
+        return goalRepository.findAllByUserId(user.getId());
     }
 
 }

@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Rejestracja - Snake in The Pocket</title>
+    <title>Kontakt - Snake in The Pocket</title>
     <%@include file="include/meta.jsp" %>
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/contact.css"/>">
